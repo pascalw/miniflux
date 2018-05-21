@@ -38,6 +38,9 @@
                 </span>
                 <span class="category"><a href="{{ route "categoryEntries" "categoryID" .Feed.Category.ID }}">{{ .Feed.Category.Title }}</a></span>
             </div>
+            <div class="item-preview">
+              {{ truncateHTML .Content }}
+            </div>
             {{ template "item_meta" dict "user" $.user "entry" . "hasSaveEntry" $.hasSaveEntry }}
         </article>
         {{ end }}

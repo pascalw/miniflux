@@ -17,6 +17,7 @@ import (
 	"miniflux.app/http/route"
 	"miniflux.app/model"
 	"miniflux.app/url"
+	"miniflux.app/reader/sanitizer"
 )
 
 type funcMap struct {
@@ -43,6 +44,9 @@ func (f *funcMap) Map() template.FuncMap {
 		},
 		"route": func(name string, args ...interface{}) string {
 			return route.Path(f.router, name, args...)
+		},
+		"truncateHTML": func(str string) string {
+			return truncate(sanitizer.StripTags(str))
 		},
 		"noescape": func(str string) template.HTML {
 			return template.HTML(str)
@@ -110,4 +114,14 @@ func (f *funcMap) Map() template.FuncMap {
 
 func newFuncMap(cfg *config.Config, router *mux.Router) *funcMap {
 	return &funcMap{cfg, router}
+}
+
+func truncate(str string) string {
+	max := 100
+	str = strings.TrimSpace(str)
+	if len(str) > max {
+		return str[:max] + "..."
+	}
+
+	return str
 }
