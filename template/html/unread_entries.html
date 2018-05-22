@@ -1,18 +1,8 @@
 {{ define "title"}}{{ t "Unread Items" }} {{ if gt .countUnread 0 }}({{ .countUnread }}){{ end }} {{ end }}
 
 {{ define "content"}}
-<section class="page-header">
+<section class="page-header unread-items">
     <h1>{{ t "Unread" }} (<span class="unread-counter">{{ .countUnread }}</span>)</h1>
-    {{ if .entries }}
-    <ul>
-        <li>
-            <a href="#" data-on-click="markPageAsRead">{{ t "Mark this page as read" }}</a>
-        </li>
-        <li>
-            <a href="{{ route "markAllAsRead" }}">{{ t "Mark all as read" }}</a>
-        </li>
-    </ul>
-    {{ end }}
 </section>
 
 {{ if not .entries }}
@@ -38,6 +28,17 @@
         {{ end }}
     </div>
     {{ template "pagination" .pagination }}
+
+    <section class="page-header page-footer">
+      <ul>
+          <li>
+              <a href="#" data-on-click="markPageAsRead">{{ t "Mark this page as read" }}</a>
+          </li>
+          <li>
+              <a href="{{ route "markAllAsRead" }}">{{ t "Mark all as read" }}</a>
+          </li>
+      </ul>
+    </section>
 {{ end }}
 
 {{ end }}

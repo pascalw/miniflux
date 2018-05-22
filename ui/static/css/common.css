@@ -80,6 +80,10 @@ a:hover {
     margin-bottom: 25px;
 }
 
+.page-header.unread-items {
+    margin-bottom: 15px;
+}
+
 .page-header h1 {
     font-weight: 500;
     border-bottom: 1px dotted #ddd;
@@ -94,7 +98,14 @@ a:hover {
     line-height: 1.8em;
 }
 
+.page-footer {
+    margin-bottom: 0;
+    margin-top: 10px;
+    border-top: 1px dotted #ddd;
+}
+
 /* Logo */
+
 .logo {
     cursor: pointer;
     text-align: center;
