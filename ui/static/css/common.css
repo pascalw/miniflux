@@ -600,6 +600,10 @@ a.button {
     content: "";
 }
 
+.item-preview {
+  font-size: 0.9em;
+}
+
 .items {
     overflow-x: hidden;
 }
