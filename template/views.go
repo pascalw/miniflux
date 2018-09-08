@@ -702,6 +702,9 @@ var templateViewsMap = map[string]string{
                 </span>
                 <span class="category"><a href="{{ route "categoryEntries" "categoryID" .Feed.Category.ID }}">{{ .Feed.Category.Title }}</a></span>
             </div>
+            <div class="item-preview">
+              {{ truncateHTML .Content }}
+            </div>
             {{ template "item_meta" dict "user" $.user "entry" . "hasSaveEntry" $.hasSaveEntry }}
         </article>
         {{ end }}
@@ -1227,18 +1230,8 @@ var templateViewsMap = map[string]string{
 	"unread_entries": `{{ define "title"}}{{ t "Unread Items" }} {{ if gt .countUnread 0 }}({{ .countUnread }}){{ end }} {{ end }}
 
 {{ define "content"}}
-<section class="page-header">
+<section class="page-header unread-items">
     <h1>{{ t "Unread" }} (<span class="unread-counter">{{ .countUnread }}</span>)</h1>
-    {{ if .entries }}
-    <ul>
-        <li>
-            <a href="#" data-on-click="markPageAsRead">{{ t "Mark this page as read" }}</a>
-        </li>
-        <li>
-            <a href="{{ route "markAllAsRead" }}">{{ t "Mark all as read" }}</a>
-        </li>
-    </ul>
-    {{ end }}
 </section>
 
 {{ if not .entries }}
@@ -1252,18 +1245,33 @@ var templateViewsMap = map[string]string{
                     {{ if ne .Feed.Icon.IconID 0 }}
                         <img src="{{ route "icon" "iconID" .Feed.Icon.IconID }}" width="16" height="16" alt="{{ .Feed.Title }}">
                     {{ end }}
-                    <a href="{{ route "unreadEntry" "entryID" .ID }}">{{ .Title }}</a>
+                    <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"data-original-link="true">{{ .Title }}</a>
                 </span>
                 <span class="category"><a href="{{ route "categoryEntries" "categoryID" .Feed.Category.ID }}">{{ .Feed.Category.Title }}</a></span>
+            </div>
+            <div class="item-preview">
+              {{ truncateHTML .Content }}
             </div>
             {{ template "item_meta" dict "user" $.user "entry" . "hasSaveEntry" $.hasSaveEntry }}
         </article>
         {{ end }}
     </div>
     {{ template "pagination" .pagination }}
+
+    <section class="page-header page-footer">
+      <ul>
+          <li>
+              <a href="#" data-on-click="markPageAsRead">{{ t "Mark this page as read" }}</a>
+          </li>
+          <li>
+              <a href="{{ route "markAllAsRead" }}">{{ t "Mark all as read" }}</a>
+          </li>
+      </ul>
+    </section>
 {{ end }}
 
-{{ end }}`,
+{{ end }}
+`,
 	"users": `{{ define "title"}}{{ t "Users" }}{{ end }}
 
 {{ define "content"}}
@@ -1343,7 +1351,7 @@ var templateViewsMapChecksums = map[string]string{
 	"edit_feed":           "1a8e342e4fac80e8b9c73537c7fe8aaf7f9e3e7af22f411927010897dd37e9c3",
 	"edit_user":           "7373e09f805e6c017167001519b9feb04226be6c81c2875cbacd5ce94f2c24bf",
 	"entry":               "1aa2767a879591f0a3681787fc9e2c53e06949695b21106286d190712a9f428a",
-	"feed_entries":        "76e7e32cdd6552304e38931459fe12cefdb5354f65a7ac3bbed52a2979896d3e",
+	"feed_entries":        "7222d9d4dcfd00079cb9d76ae93c21f7ceba05733d3e0e5ea385d7370b255529",
 	"feeds":               "1006698abfe0962b656f27794bc44568515392da72b6fac0c03316de06024237",
 	"history_entries":     "f94e15d37d7604500cede7b583e03bf79c06be81c6597a4a43693f5712af2e13",
 	"import":              "73b5112e20bfd232bf73334544186ea419505936bc237d481517a8622901878f",
@@ -1352,6 +1360,6 @@ var templateViewsMapChecksums = map[string]string{
 	"search_entries":      "a6e69c3edf414558541e8a23bf197d7580b043f8ddaf53a5b609bcd678fd6f3d",
 	"sessions":            "3fa79031dd883847eba92fbafe5f535fa3a4e1614bb610f20588b6f8fc8b3624",
 	"settings":            "d435dc37e82896ce9a7a573b3c2aeda1db71eec62349e2472ebbf1d5c3e0bc21",
-	"unread_entries":      "adbddbdd0ce70f5c622a2a2687b261121e397e15536dcb551f71bb11550ca46b",
+	"unread_entries":      "52f32aa2234675363b3dd9d843e860620effa42f60f61fb7dfe2eb1ea1cd9cbf",
 	"users":               "c6d91b0b29984b4cb3073bec6a2933cfb72981ec60f54b6c7aa05194f0e860bd",
 }

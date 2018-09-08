@@ -43,7 +43,7 @@ var templateCommonMap = map[string]string{
             </li>
         {{ end }}
         <li>
-            <a href="{{ .entry.URL }}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-original-link="true">{{ t "Original" }}</a>
+            <a href="{{ route "unreadEntry" "entryID" .entry.ID }}">Cached</a>
         </li>
         {{ if .entry.CommentsURL }}
             <li>
@@ -71,7 +71,8 @@ var templateCommonMap = map[string]string{
         </li>
     </ul>
 </div>
-{{ end }}`,
+{{ end }}
+`,
 	"layout": `{{ define "base" }}
 <!DOCTYPE html>
 <html>
@@ -242,7 +243,7 @@ var templateCommonMap = map[string]string{
 
 var templateCommonMapChecksums = map[string]string{
 	"entry_pagination": "756ef122f3ebc73754b5fc4304bf05e59da0ab4af030b2509ff4c9b4a74096ce",
-	"item_meta":        "d85d1ae181120b7a3d38173b3990a0c2a5cf706cabdfb00c4d002a09271de51e",
+	"item_meta":        "f4593085a28e9915a5b43aa22df2457b0e6642e4fc735b3c79b5e74ea56dfd83",
 	"layout":           "2491695e33a496c9bd902a2cb5bc3a6a540f98ac7c24591d503a77ba0f5f0ebe",
 	"pagination":       "b592d58ea9d6abf2dc0b158621404cbfaeea5413b1c8b8b9818725963096b196",
 }
