@@ -19,7 +19,7 @@
             </li>
         {{ end }}
         <li>
-            <a href="{{ .entry.URL }}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-original-link="true">{{ t "Original" }}</a>
+            <a href="{{ route "unreadEntry" "entryID" .entry.ID }}">Cached</a>
         </li>
         {{ if .entry.CommentsURL }}
             <li>
