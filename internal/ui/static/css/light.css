@@ -1,9 +1,9 @@
 :root {
-    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family: helvetica neue,Helvetica,Arial,sans-serif;
     --body-color: #333;
     --body-background: #fff;
     --hr-border-color: #ccc;
-    --title-color: #333;
+    --title-color: #000;
     --link-color: #3366CC;
     --link-focus-color: red;
     --link-hover-color: #333;
@@ -16,7 +16,7 @@
     --header-active-link-color: #444;
 
     --page-header-title-color: #333;
-    --page-header-title-border-color: #333;
+    --page-header-title-border-color: #ddd;
 
     --logo-color: #000;
     --logo-hover-color-span: #000;
