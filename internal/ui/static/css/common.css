@@ -816,6 +816,10 @@ template {
     font-size: inherit;
 }
 
+.item-preview {
+  font-size: .9em;
+}
+
 .feed-entries-counter {
     display: inline-flex;
     gap: 2px;

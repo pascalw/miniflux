@@ -127,6 +127,9 @@
                     </a>
                 </span>
             </header>
+            <div class="item-preview">
+              {{ truncateHTML .Content }}
+            </div>
             {{ template "item_meta" dict "user" $.user "entry" . "hasSaveEntry" $.hasSaveEntry }}
         </article>
         {{ end }}
